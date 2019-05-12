@@ -1,0 +1,35 @@
+version: '2.1'
+
+services:
+
+    chronograf:
+        image: chronograf:latest
+        hostname: chronograf
+        ports:
+            - "8888:8888"
+        volumes:
+            - ./chronograf:/var/lib/chronograf
+
+    influxdb:
+        image: influxdb:1.7.5-alpine
+        environment:
+            INFLUXDB_HTTP_AUTH_ENABLED: 'true'
+            INFLUXDB_DATA_TRACE_LOGGING_ENABLED: 'true'
+            INFLUXDB_DATA_QUERY_LOG_ENABLED: 'true'
+            INFLUXDB_LOGGING_LEVEL: 'debug'
+            
+            # admin user and pass
+            INFLUXDB_ADMIN_USER: openiot
+            INFLUXDB_ADMIN_PASSWORD: openiot
+            
+            # CLI user and pass
+            INFLUX_USERNAME: openiot
+            INFLUX_PASSWORD: openiot
+        restart: always
+        volumes:
+            - ./influxdb:/var/lib/influxdb
+
+networks:
+    default:
+        external:
+            name: openiot

@@ -1,0 +1,35 @@
+{
+  "name": "net.vorotnikov.influx",
+  "version": "1.0.0",
+  "description": "Influx plugin for data persistency.",
+  "main": "index.js",
+  "scripts": {
+    "prepack": "npm test",
+    "postpack": "./utils/convert.sh net.vorotnikov.influx-1.0.0.tgz",
+    "test": "mocha *.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvorotnikov/open-iot-influx.git"
+  },
+  "author": "Petar Vorotnikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pvorotnikov/open-iot-influx/issues"
+  },
+  "homepage": "https://github.com/pvorotnikov/open-iot-influx#readme",
+  "dependencies": {
+    "influx": "^5.0.7"
+  },
+  "bundleDependencies": [
+    "influx"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mock-require": "^3.0.3",
+    "moment": "^2.24.0",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
+  }
+}

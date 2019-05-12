@@ -1,0 +1,10 @@
+utils
+proto
+*.tgz
+*.zip
+.env
+.DS_Store
+*.spec.js
+persistency.json
+README.md
+LICENSE
