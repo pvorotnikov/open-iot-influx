@@ -65,3 +65,5 @@ typings/
 *_pb.js
 persistency.json
 .DS_Store
+influxdb/
+chronograf/

@@ -1,5 +1,7 @@
 utils
 proto
+influxdb
+chronograf
 *.tgz
 *.zip
 .env
@@ -8,3 +10,4 @@ proto
 persistency.json
 README.md
 LICENSE
+docker-compose.yaml
