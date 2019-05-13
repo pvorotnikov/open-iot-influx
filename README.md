@@ -21,3 +21,6 @@ set -x SECRET_KEY <secret key>
 set -x IOT_HOST <iot host>
 ./utils/publish.sh net.vorotnikov.influx-1.0.0.zip $IOT_HOST $ACCESS_KEY $SECRET_KEY
 ```
+
+# How to set up InfluxDB instance
+Follow the instructions in [Open IoT Wiki article](https://github.com/pvorotnikov/open-iot/wiki/Influx-Integration)
