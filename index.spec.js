@@ -56,8 +56,7 @@ describe('Influx', function() {
 		influx.suspend()
 	})
 
-	it('should process cron message', async () => {
-
+	it('should process influx array message', async () => {
 		const contextStub = {
 			topic: 'influx',
 			message: generateData(),
@@ -66,8 +65,50 @@ describe('Influx', function() {
 		}
 		let output = await influx.process(contextStub)
 		output.should.be.an('array')
-		
+	})
 
+	it('should process influx object message', async () => {
+		const contextStub = {
+			topic: 'influx',
+			message: generateData()[0],
+			appId: 'abc', 
+			gatewayId: 'def',
+		}
+		let output = await influx.process(contextStub)
+		output.should.be.an('object')
+	})
+
+	it('should process influx json array message', async () => {
+		const contextStub = {
+			topic: 'influx',
+			message: JSON.stringify(generateData()),
+			appId: 'abc', 
+			gatewayId: 'def',
+		}
+		let output = await influx.process(contextStub)
+		output.should.be.a('string')
+	})
+
+	it('should process influx json object message', async () => {
+		const contextStub = {
+			topic: 'influx',
+			message: JSON.stringify(generateData()[0]),
+			appId: 'abc', 
+			gatewayId: 'def',
+		}
+		let output = await influx.process(contextStub)
+		output.should.be.a('string')
+	})
+
+	it('should process influx json buffer message', async () => {
+		const contextStub = {
+			topic: 'influx',
+			message: Buffer.from(JSON.stringify(generateData())),
+			appId: 'abc', 
+			gatewayId: 'def',
+		}
+		let output = await influx.process(contextStub)
+		output.should.be.instanceof(Buffer)
 	})
 
 })

@@ -49,7 +49,33 @@ async function cleanup() {
 async function _process(context) {
     console.log(`${MODULE_NAME}.process() called`)
     const { topic, message, appId, gatewayId } = context
-    await influx.write(message)
+
+    let points = null
+    switch (Object.prototype.toString.call(message)) {
+        case '[object Array]': 
+            points = message
+            break
+        case '[object Object]': 
+            points = [message] 
+            break    
+        case '[object Uint8Array]':
+        case '[object String]': 
+            try {
+                const parsedMessage = JSON.parse(message)
+                context.message = parsedMessage
+                await _process(context)
+            } catch (err) {
+                console.error(err.message)
+            }
+            break
+        default:
+            console.warn('Impropert message')
+    }
+    
+    if (points) {
+        await influx.write(points)
+    }
+
     return message
 }
 
