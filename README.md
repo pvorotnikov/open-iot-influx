@@ -1,6 +1,10 @@
 # open-iot-influx
 Influx persistency plugin for Open IoT.
 
+# Arguments
+The arguments object defined in the integration step is passed as property
+of the `context` object. The plugin does not support arguments.
+
 # How to pack
 This package is bundled using the `npm pack` command that produces
 a tarball of the package. It is then converted to zip archive using

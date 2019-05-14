@@ -46,6 +46,11 @@ async function cleanup() {
     console.log(`${MODULE_NAME}.cleanup() called`)
 }
 
+/**
+ * Process incoming message
+ * @param {Object} context 
+ * @param {Object} context.arguments
+ */
 async function _process(context) {
     console.log(`${MODULE_NAME}.process() called`)
     const { topic, message, appId, gatewayId } = context
